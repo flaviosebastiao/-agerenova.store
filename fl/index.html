@@ -223,6 +223,19 @@ src="https://www.facebook.com/tr?id=871387300810208&ev=PageView&noscript=1"
             <a href="#kits" class="btn">QUERO EXPERIMENTAR</a>
         </div>
     </section>
+<button onclick="document.getElementById('meuPopup').style.display='block';document.querySelector('.overlay').style.display='block'">GARANTIR MINHA VAGA!</button>
+
+<div class="overlay" onclick="document.getElementById('meuPopup').style.display='none';this.style.display='none'"></div>
+
+<div id="meuPopup">
+    <h2>Preencha seus dados para garantir seus brindes!</h2>
+    <form id="customerForm">
+        <input type="text" name="customer.name" placeholder="Nome" required>
+        <input type="email" name="customer.email" placeholder="E-mail" required>
+        <input type="tel" id="customerPhone" name="customer.phone" placeholder="(99) 99999-9999" required>
+        <input type="submit" value="Finalizar Compra">
+    </form>
+</div>
 
     <section class="sec9" id="">
         <div class="sec9div">
@@ -262,6 +275,7 @@ src="https://www.facebook.com/tr?id=871387300810208&ev=PageView&noscript=1"
                            <p>12x de R$<p style="font-size: 35px; font-weight: 700; color: #ab8a35;">59</p>,70</p>
                         </div>
                     </div>
+                    <button onclick="document.getElementById('meuPopup').style.display='block';document.querySelector('.overlay').style.display='block'">GARANTIR MINHA VAGA!</button>
                     <a href="https://checkout.payt.com.br/5b8e9841e87fb8fc590434f5d933c92c?split=12&src=Flavio" class="btn-price">COMPRAR AGORA</a>
                     <p style="padding: 5px;"></p>
                     <h3>Cada unidade contém 30ml</h3>
@@ -731,6 +745,56 @@ src="https://www.facebook.com/tr?id=871387300810208&ev=PageView&noscript=1"
     }   
       
     </script>
+
+    <script>
+document.getElementById('customerForm').addEventListener('submit', function(e) {
+  e.preventDefault(); // Previne o envio padrão do formulário
+
+  // Captura os dados do formulário
+  var formData = new FormData(this);
+  var params = new URLSearchParams();
+
+  // Itera sobre os valores do formulário
+  for (var pair of formData.entries()) {
+    // Verifica se o campo atual é o telefone do cliente
+    if (pair[0] === 'customer.phone') {
+      // Garante que o número comece com +55
+      var phoneNumber = pair[1].startsWith('+55') ? pair[1] : '+55' + pair[1];
+      params.append(pair[0], phoneNumber);
+    } else {
+      // Para outros campos, apenas adiciona ao parâmetro como está
+      params.append(pair[0], pair[1]);
+    }
+  }
+
+  // Constrói a URL de destino
+  var baseUrl = 'https://pay.kirvano.com/f4d676d6-0e32-4cff-94c7-f9657311a701?src=Flavio';
+  var checkoutUrl = baseUrl + '&' + params.toString();
+
+  // Redireciona o usuário para a URL de checkout
+  window.location.href = checkoutUrl;
+});
+
+document.getElementById('customerPhone').addEventListener('input', function(e) {
+  var input = e.target.value.replace(/\D/g, ''); // Remove tudo que não for dígito
+
+  // Limita o input a 11 dígitos numéricos
+  input = input.slice(0, 11);
+
+  // Formata o número com o DDD e o hífen no lugar correto
+  if (input.length > 2) {
+    // Insere espaço após o DDD
+    input = input.slice(0, 2) + ' ' + input.slice(2);
+  }
+  if (input.length > 7) {
+    // Insere o hífen após o quinto dígito do número, considerando o espaço adicionado após o DDD
+    input = input.slice(0, 8) + '-' + input.slice(8);
+  }
+
+  // Atualiza o valor do campo com a formatação
+  e.target.value = input;
+});
+</script>
 
 </body>
 </html>
