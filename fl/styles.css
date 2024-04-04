@@ -1122,3 +1122,97 @@ h3{
     }
 
 /*------------------------------------------------------MOBILE-END------------------------------------------------------*/
+
+
+/*-----TESTE DE INSERÇÃO DE FORMULARIO-----*/
+    button{
+    font-family: "Sora", sans-serif;
+    background-color: #26af2c;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 20px 30px;
+    border: 0px;
+    border-radius: 50px;
+    text-wrap: wrap;
+    line-height: 1.1em;
+}
+
+button:hover{
+    background-color: #1d9122;
+}
+    
+    /* Estilos básicos para o popup */
+    #meuPopup {
+         font-family: "Sora", sans-serif;
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 100;
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px; /* Bordas arredondadas */
+        width: 500px; /* Largura padrão */
+        box-sizing: border-box; /* Garante que padding não afete a largura */
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 50;
+    }
+    /* Estilos adicionais para o formulário e botão */
+    #customerForm input[type="text"],
+    #customerForm input[type="email"],
+    #customerForm input[type="tel"],
+    #customerForm input[type="submit"] {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+    #customerForm input[type="submit"] {
+        padding: 15px;
+        font-weight: 600;
+        font-size: 20px;
+        text-transform: uppercase;
+        background-color: #26af2c;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    #customerForm input[type="submit"]:hover {
+        background-color: #1d9122;
+    }
+
+    /* Media Queries para telas pequenas */
+    @media (max-width: 600px) {
+        #meuPopup {
+            width: 90%; /* Aumenta a largura do popup em telas pequenas */
+            padding: 10px; /* Reduz o padding em telas pequenas para economizar espaço */
+        }
+        
+    button{
+    font-size: 18px;
+    padding: 20px;
+}
+    }
+    
+    #meuPopup h2 {
+        font-weight: 600;
+    color: #333; /* Cor do texto */
+    font-size: 22px; /* Tamanho da fonte */
+    margin-top: 0; /* Remove a margem superior padrão */
+    text-align: center; /* Alinha o texto ao centro */
+    margin-bottom: 20px; /* Espaçamento antes do formulário */
+}
